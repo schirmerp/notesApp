@@ -13,33 +13,6 @@ today = date.today()
 d1 = today.strftime("%m/%d/%y")
 
 
-def add_note(a,b):
-    with open(f"{a}", "a+") as f:
-        f.write(str(b) + "\n")
-    return a  
-
-def get_note(a):
-    with open(f"notes.txt", "r+") as f:
-        read = f.readlines()
-        for line in read:
-            z = re.search(a, line)
-            if z:
-                 print(line, z.group(0))
-
-
-def del_note(a):
-    with open("notes.txt", "r+") as f:
-        with open("temp.txt", "w") as t:
-            read = f.readlines()
-            for line in read:
-                z = re.search(a, line)
-                if z:
-                    pass
-                else:
-                    t.write(line)
-        os.rename("temp.txt", "notes.txt")
-
-
 def new_note():
     today_date = d1
     notes_title = notes_title_entry.get()
@@ -57,8 +30,8 @@ def view_n():
     child_win.title("Note")
     child_win.geometry("500x500")
     content= note_text
-    Label(child_win, text=content, font=('Bell MT', 20, 'bold')).pack()
-    w.withdraw()
+    Label(child_win, text=content).pack()
+    
    
 #Create an Entry Widget
  
@@ -68,9 +41,7 @@ def view_n():
 
 
 
-date_label = Label(w, text="Date:").place(x=10,y=20)
-date_entry = Entry(w,  width=20)
-date_entry.place(x=50,y=20)
+
 notes_title_label = Label(w, text="Notes title:").place(x=10,y=50)
 notes_title_entry = Entry(w,  width=30)
 notes_title_entry.place(x=80,y=50)
@@ -80,8 +51,8 @@ notes_entry.place(x=60,y=90)
 b1 = Button(w, text="Add Note", bg = 'Turquoise',fg='Red',command=new_note).place(x=10,y=190)
 b2 = Button(w,text='Delete Note', bg = 'Turquoise',fg='Red',command=del_n).place(x=110,y=190)
 button3 = Button(w,text='view notes', bg = 'Turquoise',fg='Red',command=view_n).place(x=210,y=190)
-
-
+counter = Label(w, text=count_note())
+counter.pack(side=BOTTOM)
 w.mainloop()
 
 

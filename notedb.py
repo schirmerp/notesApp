@@ -16,7 +16,8 @@ def get_note(a):
         for line in read:
             z = re.search(a, line)
             if z:
-                 print(line, z.group(0))
+                return line
+                
 
 def del_note(a):
     with open("notes.txt", "r+") as f:
@@ -31,8 +32,10 @@ def del_note(a):
         os.rename("temp.txt", "notes.txt")
 
 
-add_note('notes.txt','note to remind myself the fucking world is going crazy')
-
-get_note('world')
-
-del_note('long')
+def count_note():
+    count = 0
+    with open(f"notes.txt", "r+") as f:
+        read = f.readlines()
+        for line in read:
+            count += 1
+    return count

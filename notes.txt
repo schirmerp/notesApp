@@ -1,10 +1,10 @@
 01/20/2022 bob hey bob heres your note
 07/27/2022 : first note : this is my first note
 07/27/2022 : second note : pretty bootleg but something is happening right!!
-note to remind myself the fucking world is going crazy
 2022-07-27 : auto date attempt : trying new date feature
-note to remind myself the fucking world is going crazy
 27/07/2022 : second date attempt : trying new date format
-note to remind myself the fucking world is going crazy
 07/27/22 : third try date : the date to the left better look right now
 
+07/27/22 : testing : testing functionailty after closing note window
+
+07/27/22 : test counter : testing the counter at the bottom
