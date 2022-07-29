@@ -11,12 +11,17 @@ def add_note(a,b):
     return a  
 
 def get_note(a):
-    with open(f"notes.txt", "r+") as f:
-        read = f.readlines()
-        for line in read:
-            z = re.search(a, line)
-            if z:
-                return line
+    if a == "":
+        return all_notes()
+    else:    
+        with open(f"notes.txt", "r+") as f:
+            read = f.readlines()
+            for line in read:
+                z = re.search(a, line)
+                if z:
+                    return line
+                else:
+                    return all_notes()
                 
 
 def del_note(a):
@@ -31,6 +36,15 @@ def del_note(a):
                     t.write(line)
         os.rename("temp.txt", "notes.txt")
 
+def all_notes():
+    lines = []
+    with open(f"notes.txt", "r+") as f:
+        read = f.readlines()
+        for line in read:
+            lines.append(line)
+    lines = "\n".join(lines)    
+    return lines
+            
 
 def count_note():
     count = 0
@@ -39,3 +53,7 @@ def count_note():
         for line in read:
             count += 1
     return count
+
+def stay_on_top(a):
+   a.lift()
+   a.after(2000, stay_on_top)

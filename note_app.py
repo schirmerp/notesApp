@@ -1,17 +1,26 @@
 from tkinter import *
 from tkinter import ttk
+
+from numpy import column_stack
 from notedb import *
 from tkinter import simpledialog
 from datetime import date
 
 
 w = Tk()
+
 n_h = 450
 n_w = 600
-w.geometry(f'{n_w}x{n_h}')
+#w.geometry(f'{n_w}x{n_h}')
 today = date.today()
 d1 = today.strftime("%m/%d/%y")
 
+def sticky_note():
+    sn = Toplevel(w)
+    sn.attributes('-topmost', True)
+    sn.geometry('400x350')
+    sn_text = Text(sn, width=30, height= 500, bg='yellow', font=( 'Courier_New', 15, 'bold'))
+    sn_text.pack(fill='both')
 
 
 def new_note():
@@ -33,32 +42,29 @@ def view_n():
     note_text = get_note(answer1)
     child_win= Toplevel(w)
     child_win.title("Note")
+    child_win.attributes('-topmost', True)
     child_win.geometry("500x500")
     content= note_text
     Label(child_win, text=content).pack()
     
-   
-#Create an Entry Widget
- 
-#Let us create a button in the Main window
-   
+
     
 
 
 count = StringVar()
 count.set(count_note())
 
-notes_title_label = Label(w, text="Notes title:").place(x=10,y=50)
+notes_title_label = Label(w, text="Notes title:").grid(row=0, column=1)
 notes_title_entry = Entry(w,  width=30)
-notes_title_entry.place(x=80,y=50)
-notes_label = Label(w, text="Notes:").place(x=10,y=90)
+notes_title_entry.grid(row=1, columnspan=2)
+notes_label = Label(w, text="Notes:").grid(row=2, column=1)
 notes_entry = Text(w, width=50,height=5)
-notes_entry.place(x=60,y=90)
-b1 = Button(w, text="Add Note", bg = 'Turquoise',fg='Red',command=new_note).place(x=10,y=190)
-b2 = Button(w,text='Delete Note', bg = 'Turquoise',fg='Red',command=del_n).place(x=110,y=190)
-button3 = Button(w,text='view notes', bg = 'Turquoise',fg='Red',command=view_n).place(x=210,y=190)
+notes_entry.grid(row=3, column=1, columnspan=2)
+b1 = Button(w, text="Add Note", bg = 'Turquoise',fg='Red',command=new_note).grid(row=4, column=0)
+b2 = Button(w,text='Delete Note', bg = 'Turquoise',fg='Red',command=del_n).grid(row=4, column=1)
+button3 = Button(w,text='view notes', bg = 'Turquoise',fg='Red',command=sticky_note).grid(row=4, column=2)
 counter = Label(w, textvariable=count)
-counter.pack(side=BOTTOM)
+counter.grid(row=6, column=1)
 w.mainloop()
 
 
