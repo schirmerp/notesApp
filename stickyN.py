@@ -10,12 +10,14 @@ today = date.today()
 d1 = today.strftime("%m/%d/%y")
 
 w = Tk()
-
+w.title("Joe Sticky Notes")
+w.geometry("250x32")
 def sn():
     sn = Toplevel(w)
-    sn.geometry('400x300')
+    sn.title("Joe Note")
+    sn.geometry('400x300+1500+0')
     sn.attributes('-topmost', True)
-    sn_text = Text(sn, bg='yellow', font=('Courier_New', 15, 'bold'))
+    sn_text = Text(sn, bg='#f2ed91', font=('Courier_New', 12, 'bold'))
     sn_text.pack(fill='both')
     
     def save_note():
