@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 from tkinter import *
 import os
 from tkinter.simpledialog import askstring
@@ -15,8 +17,6 @@ def sn():
     sn.attributes('-topmost', True)
     sn_text = Text(sn, bg='yellow', font=('Courier_New', 15, 'bold'))
     sn_text.pack(fill='both')
-    
-    st= sn_text.get(1.0, 'end')
     
     def save_note():
         n = askstring("Save", "Enter filename for note to save:")
@@ -48,10 +48,3 @@ b1 = Button(w, text='New Note', command= sn).grid(row=0, column=0)
 w.mainloop()
 
 
-# m= Menu(sn)
-#     save = Menu(m)
-#     save.add_command(label='Save', command ='save')
-#     save.add_separator()
-#     save.add_command(label='New', command= 'new')
-#     m.add_cascade(label='File', m=save)
-#     sn.config(menu=m)
